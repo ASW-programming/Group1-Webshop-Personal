@@ -5,8 +5,13 @@ import { useShop } from "../utils/context.jsx";
 import { AddIcon, RemoveIcon } from "../assets/Icons.jsx";
 import { useState } from "react";
 
-function ProductCard({ products, activeCategory }) {
-	const { handleQuantityChange, getProductQuantity } = useShop();
+function ProductCard() {
+	const {
+		handleQuantityChange,
+		getProductQuantity,
+		products,
+		activeCategory,
+	} = useShop();
 	const [sortBy, setSortBy] = useState("");
 
 	const filteredProducts = products.filter(
