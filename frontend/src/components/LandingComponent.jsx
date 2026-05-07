@@ -12,6 +12,7 @@ function LandingComponent() {
 		activeCategory,
 		searchedProducts,
 	} = useShop();
+
 	const discountedProducts = products.filter((p) => p.reducedPrice);
 
 	// Slides
@@ -29,14 +30,15 @@ function LandingComponent() {
 	return (
 		<div className="content">
 			<ScrollBanner slides={slidesData} />
-			
-			<ProductCard
-				products={searchedProducts}
-				activeCategory={activeCategory}
-			/>
 
-			<Link to="/orderHistory" >
-				<ItemButton title="Order History" text="Order historik" className="orderHistory"/>
+			<ProductCard />
+
+			<Link to="/orderHistory">
+				<ItemButton
+					title="Order History"
+					text="Order historik"
+					className="orderHistory"
+				/>
 			</Link>
 		</div>
 	);
