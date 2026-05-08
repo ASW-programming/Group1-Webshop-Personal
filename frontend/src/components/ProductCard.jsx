@@ -11,6 +11,8 @@ function ProductCard() {
 		getProductQuantity,
 		products,
 		activeCategory,
+		increaseProduct,
+		decreaseProduct,
 	} = useShop();
 	const [sortBy, setSortBy] = useState("");
 
@@ -88,7 +90,7 @@ function ProductCard() {
 												title="Remove one product"
 												icon={<RemoveIcon />}
 												onClick={() => {
-													handleQuantityChange(u, -1);
+													decreaseProduct(u);
 												}}
 											/>
 
@@ -98,7 +100,7 @@ function ProductCard() {
 												title="Add one product"
 												icon={<AddIcon />}
 												onClick={() =>
-													handleQuantityChange(u, 1)
+													increaseProduct(u)
 												}
 											/>
 										</>
@@ -108,7 +110,7 @@ function ProductCard() {
 											className="buyButton"
 											text="Köp"
 											onClick={() => {
-												handleQuantityChange(u, 1);
+												increaseProduct(u);
 											}}
 										/>
 									)}
