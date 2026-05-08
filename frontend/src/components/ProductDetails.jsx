@@ -7,8 +7,6 @@ import { AddIcon, RemoveIcon, ReturnIcon } from "../assets/Icons.jsx";
 const ProductDetails = () => {
 	const navigate = useNavigate();
 	const {
-		addedProducts,
-		handleQuantityChange,
 		products,
 		productsLoading,
 		productsError,
