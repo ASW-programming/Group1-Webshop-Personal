@@ -5,13 +5,7 @@ import ItemButton from "./ItemButton.jsx";
 import { Link } from "react-router-dom";
 
 function LandingComponent() {
-	const {
-		products,
-		productsLoading,
-		productsError,
-		activeCategory,
-		searchedProducts,
-	} = useShop();
+	const { products, productsLoading, productsError } = useShop();
 
 	const discountedProducts = products.filter((p) => p.reducedPrice);
 

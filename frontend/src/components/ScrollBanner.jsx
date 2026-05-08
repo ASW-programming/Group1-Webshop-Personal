@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import ItemButton from "./ItemButton";
-import { ArrowIcon, EnterIcon } from "../assets/Icons";
+import { ArrowIcon } from "../assets/Icons";
 import { useNavigate } from "react-router-dom";
 
 const ScrollBanner = ({ slides = [] }) => {

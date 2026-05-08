@@ -3,12 +3,11 @@ import { useShop } from "../utils/context.jsx";
 import {
 	AddIcon,
 	CancelIcon,
-	EmptyListIcon,
 	RemoveIcon,
 	ShoppingCartIcon,
 	ClearListIcon,
 } from "../assets/Icons";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function ShoppingCart() {

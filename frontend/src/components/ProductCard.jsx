@@ -7,7 +7,6 @@ import { useState } from "react";
 
 function ProductCard() {
 	const {
-		handleQuantityChange,
 		getProductQuantity,
 		products,
 		activeCategory,

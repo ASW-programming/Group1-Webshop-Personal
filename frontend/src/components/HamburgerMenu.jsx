@@ -16,6 +16,8 @@ function HamburgerMenu() {
 		toggleMenu();
 		if (location.pathname !== "") {
 			navigate("/");
+		} else {
+			navigate(`/${category}`);
 		}
 	};
 

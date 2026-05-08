@@ -1,17 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { getOrders } from "../utils/calls.js";
-import { useState, useEffect } from "react";
 import ItemButton from "./ItemButton";
-import { useShop } from "../utils/context.jsx";
-import {
-	AddIcon,
-	RemoveIcon,
-	EmptyListIcon,
-	ReturnIcon,
-	HomeIcon,
-	ClearListIcon,
-} from "../assets/Icons";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { ReturnIcon } from "../assets/Icons";
+import { useNavigate, useParams } from "react-router-dom";
 
 function OrderCompleted() {
 	const { id } = useParams();
@@ -27,8 +18,6 @@ function OrderCompleted() {
 	});
 
 	const lastOrder = orders?.find((p) => Number(p.orderID) === Number(id));
-
-	console.log({ id, orders, lastOrder });
 
 	if (isLoading) return <p>Laddar...</p>;
 	if (isError) return <p>Något gick fel</p>;
