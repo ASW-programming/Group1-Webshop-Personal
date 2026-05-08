@@ -43,17 +43,18 @@ const ProductDetails = () => {
 						</div>
 					</div>
 				</div>
-                <div className="productDescriptionContainer">
-				<p className="productDescription">
-					{selectedProduct.description || "Beskrivning saknas"}
-				</p>
-                </div>
+				<div className="productDescriptionContainer">
+					<p className="productDescription">
+						{selectedProduct.description || "Beskrivning saknas"}
+					</p>
+				</div>
 			</div>
 			<div className="cardButtons productPageButtons">
 				{quantity > 0 ? (
 					<>
 						<ItemButton
 							title="Remove one product"
+							className="removeButton"
 							icon={<RemoveIcon />}
 							onClick={() => {
 								handleQuantityChange(selectedProduct, -1);
@@ -63,6 +64,7 @@ const ProductDetails = () => {
 						<p>{quantity}</p>
 						<ItemButton
 							title="Add one product"
+							className="addButton"
 							icon={<AddIcon />}
 							onClick={() =>
 								handleQuantityChange(selectedProduct, 1)
