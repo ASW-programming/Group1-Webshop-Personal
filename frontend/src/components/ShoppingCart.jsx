@@ -7,7 +7,7 @@ import {
 	ShoppingCartIcon,
 	ClearListIcon,
 } from "../assets/Icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function ShoppingCart() {
@@ -24,6 +24,15 @@ function ShoppingCart() {
 	const [isCartOpen, setIsCartOpen] = useState(false);
 	const toggleCart = () => setIsCartOpen(!isCartOpen);
 
+	useEffect(() => {
+		if (!isCartOpen) return;
+
+		const handleClickOutside = () => setIsCartOpen(false);
+		document.addEventListener("click", handleClickOutside);
+
+		return () => document.removeEventListener("click", handleClickOutside);
+	}, [isCartOpen]);
+
 	return (
 		<div>
 			<div className="shoppingCartCombo">
@@ -32,7 +41,10 @@ function ShoppingCart() {
 				)}
 				<ItemButton
 					title={isCartOpen ? "Close Menu" : "Open Cart"}
-					onClick={toggleCart}
+					onClick={(e) => {
+						e.stopPropagation();
+						toggleCart();
+					}}
 					className="shoppingcartBtn"
 					icon={isCartOpen ? <CancelIcon /> : <ShoppingCartIcon />}
 				/>
