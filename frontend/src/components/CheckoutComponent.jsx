@@ -158,33 +158,34 @@ function CheckoutComponent() {
 			</div>
 
 			<div className="checkoutInfo">
-				<form onSubmit={placeOrders}>
+				<form className="orderForm" onSubmit={placeOrders}>
 					{error && <p className="errorMessage">{error}</p>}
 					<div className="checkoutName">
-						<label
-							htmlFor="cart-name-input"
-							className="cartNameLabel">
-							Ditt namn{" "}
-						</label>
-						<ItemInput
-							className="cartNameInput"
-							id="cart-name-input"
-							placeholder="Namn..."
-							onChange={(e) => {
-								setCustomer(e.target.value);
-								setError("");
-							}}
-							value={customer}
+						<div className="inputWrapper">
+							<label
+								htmlFor="cart-name-input"
+								className="cartNameLabel">
+								Ditt namn
+							</label>
+							<ItemInput
+								className="cartNameInput"
+								id="cart-name-input"
+								placeholder="Namn..."
+								onChange={(e) => {
+									setCustomer(e.target.value);
+									setError("");
+								}}
+								value={customer}
+							/>
+						</div>
+						<ItemButton
+							title="Place order"
+							className="placeOrderBtn"
+							type="submit"
+							text={isPending ? "Skickar..." : "Order"}
+							disabled={isPending}
 						/>
 					</div>
-
-					<ItemButton
-						title="Place order"
-						className="placeOrderBtn"
-						type="submit"
-						text={isPending ? "Skickar..." : "Order"}
-						disabled={isPending}
-					/>
 				</form>
 				<div className="navigationBtns">
 					<ItemButton
