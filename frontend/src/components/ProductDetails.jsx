@@ -13,6 +13,8 @@ const ProductDetails = () => {
 		productsLoading,
 		productsError,
 		getProductQuantity,
+		increaseProduct,
+		decreaseProduct,
 	} = useShop();
 
 	const { id } = useParams();
@@ -57,7 +59,7 @@ const ProductDetails = () => {
 							className="removeButton"
 							icon={<RemoveIcon />}
 							onClick={() => {
-								handleQuantityChange(selectedProduct, -1);
+								decreaseProduct(selectedProduct);
 							}}
 						/>
 
@@ -66,9 +68,7 @@ const ProductDetails = () => {
 							title="Add one product"
 							className="addButton"
 							icon={<AddIcon />}
-							onClick={() =>
-								handleQuantityChange(selectedProduct, 1)
-							}
+							onClick={() => increaseProduct(selectedProduct)}
 						/>
 					</>
 				) : (
@@ -77,7 +77,7 @@ const ProductDetails = () => {
 						title="Buy"
 						text="Köp"
 						onClick={() => {
-							handleQuantityChange(selectedProduct, 1);
+							increaseProduct(selectedProduct);
 						}}
 					/>
 				)}

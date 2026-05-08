@@ -18,6 +18,8 @@ function ShoppingCart() {
 		clearCart,
 		handleQuantityChange,
 		totalPrice,
+		increaseProduct,
+		decreaseProduct,
 	} = useShop();
 
 	const [isCartOpen, setIsCartOpen] = useState(false);
@@ -65,10 +67,7 @@ function ShoppingCart() {
 											title="Remove one product"
 											icon={<RemoveIcon />}
 											onClick={() =>
-												handleQuantityChange(
-													product,
-													-1,
-												)
+												decreaseProduct(product)
 											}
 										/>
 										{getProductQuantity(product.id)}
@@ -77,7 +76,7 @@ function ShoppingCart() {
 											title="Add one product"
 											icon={<AddIcon />}
 											onClick={() =>
-												handleQuantityChange(product, 1)
+												increaseProduct(product)
 											}
 										/>
 									</td>
