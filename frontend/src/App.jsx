@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { ShopProvider } from "./utils/context";
 import CheckoutComponent from "./components/CheckoutComponent";
 import OrderHistory from "./components/OrderHistory";
+import OrderCompleted from "./components/OrderCompleted";
 
 function App() {
 	return (
@@ -28,6 +29,10 @@ function App() {
 						<Route
 							path="/checkout"
 							element={<CheckoutComponent />}
+						/>
+						<Route
+							path="/orderComplete/:id"
+							element={<OrderCompleted />}
 						/>
 					</Routes>
 				</ShopProvider>

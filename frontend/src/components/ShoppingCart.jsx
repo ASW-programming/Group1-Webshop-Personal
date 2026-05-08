@@ -23,15 +23,11 @@ function ShoppingCart() {
 	const [isCartOpen, setIsCartOpen] = useState(false);
 	const toggleCart = () => setIsCartOpen(!isCartOpen);
 
-	const totalQuantity = addedProducts.reduce((sum, product) => {
-		return sum + product.quantity;
-	}, 0);
-
 	return (
 		<div>
 			<div className="shoppingCartCombo">
-				{totalQuantity > 0 && (
-					<p className="quantityCounter">{totalQuantity}</p>
+				{addedProducts.length > 0 && (
+					<p className="quantityCounter">{addedProducts.length}</p>
 				)}
 				<ItemButton
 					title={isCartOpen ? "Close Menu" : "Open Cart"}

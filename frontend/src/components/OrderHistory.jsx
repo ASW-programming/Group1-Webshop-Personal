@@ -180,10 +180,7 @@ function OrderHistory() {
 								if (!sortCategory) return 0;
 
 								// Checks if Choice A is a string and not a date. If not a date then isNaN = true and return to sort String
-								if (
-									typeof choiceA === "string" &&
-									isNaN(Date.parse(choiceA))
-								) {
+								if (typeof choiceA === "string") {
 									// Checks if A is greater than B with support of Swedish Letters
 									const comparison = sortAscending
 										? choiceA.localeCompare(
@@ -199,13 +196,6 @@ function OrderHistory() {
 									return comparison !== 0
 										? comparison
 										: a.id - b.id;
-								}
-
-								// Checks the date if its newer or older.
-								if (typeof choiceA === "string") {
-									return sortAscending
-										? new Date(choiceA) - new Date(choiceB)
-										: new Date(choiceB) - new Date(choiceA);
 								}
 
 								// Sorts numbers

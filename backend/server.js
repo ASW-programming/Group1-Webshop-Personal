@@ -190,6 +190,7 @@ app.route("/api/orders")
 			}
 
 			const formattedID = String(nextNumber).padStart(5, "0");
+			const now = admin.firestore.Timestamp.now();
 
 			const docRef = await db.collection("orders").add({
 				orderID: nextNumber,
@@ -197,14 +198,8 @@ app.route("/api/orders")
 				customer,
 				items,
 				totalPrice,
-				createdAt: admin.firestore.FieldValue.serverTimestamp(),
+				createdAt: now,
 			});
-
-			const docSnapshot = await docRef.get();
-			const createdAt = docSnapshot
-				.data()
-				.createdAt.toDate()
-				.toISOString();
 
 			res.status(200).json({
 				id: docRef.id,
@@ -212,7 +207,7 @@ app.route("/api/orders")
 				customer,
 				items,
 				totalPrice,
-				createdAt,
+				createdAt: now.seconds,
 			});
 		} catch (error) {
 			console.log("Fel:", error.message);
