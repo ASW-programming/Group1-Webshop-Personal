@@ -19,7 +19,7 @@ function CheckoutComponent() {
 	const [customer, setCustomer] = useState("");
 	const [checkout, setCheckout] = useState(false);
 	const [error, setError] = useState("");
-	const [lastOrder, setLastOrder] = useState(null);
+	const [lastOrder, setLastOrder] = useState("");
 	const { addProduct, addedProducts = [], clearCart, totalPrice } = useShop();
 	const navigate = useNavigate();
 
@@ -36,6 +36,7 @@ function CheckoutComponent() {
 			setCustomer("");
 			setError("");
 			setCheckout(true);
+			navigate(`/orderComplete/${data.orderID}`);
 		},
 	});
 
@@ -59,66 +60,6 @@ function CheckoutComponent() {
 
 		mutate({ customer, items: addedProducts, totalPrice: totalPrice });
 	};
-
-	//When checkout is true show frindly message.
-	if (checkout) {
-		return (
-			<div className="checkoutCart">
-				{lastOrder && (
-					<div className="checkedOutInfo">
-						<h2>
-							Tack för din beställning,{" "}
-							<span id="lastOrderCustomer">
-								{lastOrder.customer}
-							</span>
-							!
-						</h2>
-						<p>Ordernummer {lastOrder.orderID}</p>
-						<h3>Produkter:</h3>
-						<ul>
-							{lastOrder.items.map((i) => (
-								<li key={i.id}>
-									<div className="checkoutProductInfo">
-										<img
-											src={i.imageUrl}
-											style={{
-												width: "35px",
-												height: "35px",
-											}}
-										/>
-										<span>{i.name} </span>
-										<span>{i.quantity} st</span>
-										<span>
-											{(i.reducedPrice || i.price) *
-												i.quantity}{" "}
-											kr
-										</span>
-									</div>
-								</li>
-							))}
-						</ul>
-						<p>Total kostnad: {lastOrder.totalPrice} kr</p>
-						<p>
-							Vi meddelar dig när din beställning är klar för att
-							hämtas!
-						</p>
-					</div>
-				)}
-
-				<ItemButton
-					className="goBackButton"
-					title="Go back"
-					icon={<ReturnIcon />}
-					onClick={() => navigate("/")}
-				/>
-				<img
-					className="foodPicture"
-					src="/food.webp"
-					alt="Food illustration"
-				/>
-			</div>
-		);
-	}
 
 	return (
 		<div className="cartOverview">
